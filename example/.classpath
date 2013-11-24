@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/example/src/java"/>
+	<classpathentry kind="src" path="/example/test/java"/>
+	<classpathentry kind="src" path="/example/src/generated"/>
+	<classpathentry kind="src" path="/example/test/java/unit"/>
+	<classpathentry kind="src" path="/example/test/java/system"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/joda-time-2.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/junit_4_11"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jmock_2_6_0_2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Ice"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/sql"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

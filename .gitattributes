@@ -1,0 +1,3 @@
+* text=auto
+*.bat text merge-union eol=crlf
+*.cmd text merge-union eol=crlf

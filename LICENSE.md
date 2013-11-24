@@ -1,0 +1,1 @@
+The license for the included software can be found inside the "example" directory, while the license for the presentation material can be found inside the "slides" directory.

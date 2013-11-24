@@ -1,0 +1,1 @@
+java -cp tools\hsqldb_2_3_0\lib\hsqldb.jar org.hsqldb.server.Server --database.0 file:out/hsql/mydb --dbname.0 marketdata
