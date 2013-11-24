@@ -63,27 +63,33 @@ public class EventServerWitMockTest {
     public void canBeStopped() throws InterruptedException {
         assertTrue(eventServer.isRunning());
 
-        eventServer.stop();
-        eventServer.waitStatusStopped();
+        stopAndWaitForNumberOfTimes(1);
 
-        assertThat(eventServer.isRunning(), is(false));
-        assertThat(eventServer.getStatus(), is(EventServer.Status.STOPPED));
+        assertThatEventServerIsStopped();
 
     }
+
 
     @Test
     public void canBeStoppedMultipleTimes() throws InterruptedException {
         assertTrue(eventServer.isRunning());
 
-        eventServer.stop();
-        eventServer.waitStatusStopped();
+        stopAndWaitForNumberOfTimes(2);
 
-        eventServer.stop();
-        eventServer.waitStatusStopped();
+        assertThatEventServerIsStopped();
 
+    }
+
+    private void assertThatEventServerIsStopped() {
         assertThat(eventServer.isRunning(), is(false));
         assertThat(eventServer.getStatus(), is(EventServer.Status.STOPPED));
+    }
 
+    private void stopAndWaitForNumberOfTimes(int numberOfTimes) {
+        for (int i = 0; i < numberOfTimes; ++i) {
+            eventServer.stop();
+            eventServer.waitStatusStopped();
+        }
     }
 
 }

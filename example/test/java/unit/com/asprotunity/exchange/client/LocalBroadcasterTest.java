@@ -74,27 +74,34 @@ public class LocalBroadcasterTest {
 
 
     @Test
-    public void notificationCallInNonBlocking() throws Exception {
+    public void callsToNotifyEventAreNonBlocking() throws Exception {
 
         LocalBroadcaster broadcaster = new LocalBroadcaster();
 
         MockEventSubscriber blockingSubscriber = new MockEventSubscriber(MockEventSubscriber.Behaviour.BLOCKING);
         broadcaster.subscribe(blockingSubscriber);
 
-        com.asprotunity.exchange.middleware.Event iceEvent =
-                new com.asprotunity.exchange.middleware.Event(new TestTimeProvider(new DateTime()).nowUTC().toString(),
-                        "TIK_1", "USD", 1, 0.2);
+        int numberOfEventsSent = 3;
+        callNotifyEventForTimes(broadcaster, numberOfEventsSent);
 
-        broadcaster.notifyEvent(iceEvent, null);
-        broadcaster.notifyEvent(iceEvent, null);
-        broadcaster.notifyEvent(iceEvent, null);
+        assertThat(blockingSubscriber.getEventsReceived(), is(0));
 
         blockingSubscriber.unblockForever();
 
         waitUntilAllEventsPublished(broadcaster);
         broadcaster.stopAndWait();
 
-        assertThat(blockingSubscriber.getEventsReceived(), is(3));
+        assertThat(blockingSubscriber.getEventsReceived(), is(numberOfEventsSent));
+    }
+
+    private void callNotifyEventForTimes(LocalBroadcaster broadcaster, int numberOfEventsToSend) {
+        com.asprotunity.exchange.middleware.Event iceEvent =
+                new com.asprotunity.exchange.middleware.Event(new TestTimeProvider(new DateTime()).nowUTC().toString(),
+                        "TIK_1", "USD", 1, 0.2);
+
+        for (int i = 0; i < numberOfEventsToSend; ++i) {
+            broadcaster.notifyEvent(iceEvent, null);
+        }
     }
 
     private void waitUntilAllEventsPublished(LocalBroadcaster broadcaster) {
