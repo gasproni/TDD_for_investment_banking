@@ -65,11 +65,6 @@ public class LocalBroadcasterTest {
                 lock.unlock();
             }
         }
-
-        public void waitEventsReceivedEqualTo(int number) {
-            while (getEventsReceived() < number) ;
-        }
-
     }
 
 

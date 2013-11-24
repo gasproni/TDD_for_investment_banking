@@ -6,7 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62a1f12e-0bb9-4cfd-aeca-b9c21ac305e8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/java/unit/com/asprotunity/exchange/server/EventServerWitMockTest.java" afterPath="$PROJECT_DIR$/test/java/unit/com/asprotunity/exchange/server/EventServerWitMockTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/java/unit/com/asprotunity/exchange/client/LocalBroadcasterTest.java" afterPath="$PROJECT_DIR$/test/java/unit/com/asprotunity/exchange/client/LocalBroadcasterTest.java" />
     </list>
     <ignored path="example.iws" />
@@ -317,7 +316,7 @@
       <file leaf-file-name="LocalBroadcasterTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/java/unit/com/asprotunity/exchange/client/LocalBroadcasterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="40" selection-start="2706" selection-end="2706" vertical-scroll-proportion="0.60580915">
+            <state line="66" column="9" selection-start="1829" selection-end="1829" vertical-scroll-proportion="1.1618258">
               <folding />
             </state>
           </provider>
@@ -1671,7 +1670,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/java/unit/com/asprotunity/exchange/client/LocalBroadcasterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="40" selection-start="2706" selection-end="2706" vertical-scroll-proportion="0.60580915">
+        <state line="66" column="9" selection-start="1829" selection-end="1829" vertical-scroll-proportion="1.1618258">
           <folding />
         </state>
       </provider>
