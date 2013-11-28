@@ -1,0 +1,30 @@
+defaultTasks 'clean', 'build'
+
+apply plugin: "java"
+apply plugin: "idea"
+apply from: "${rootDir}/libraries.gradle"
+
+buildDir = 'target'
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+task wrapper(type: Wrapper){
+    description = 'Generates gradlew scripts for NIX and win envs'
+    gradleVersion = '1.9'
+}
+
+idea.module {
+    downloadSources = true
+}
+
+dependencies {
+    compile libs.slf4jApi
+
+    runtime libs.slf4jLog4j,
+            libs.log4j
+
+    testCompile libs.test.jbehave_core
+}
