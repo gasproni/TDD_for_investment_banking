@@ -145,14 +145,14 @@
 
     <path id="example.module.sourcepath">
         <dirset dir="${module.example.basedir}">
-            <include name="src/java"/>
+            <include name="src/main/java"/>
             <include name="src/generated"/>
         </dirset>
     </path>
 
     <path id="example.module.test.sourcepath">
         <dirset dir="${module.example.basedir}">
-            <include name="test/java"/>
+            <include name="src/test/java"/>
         </dirset>
     </path>
 
@@ -173,7 +173,7 @@
         </javac>
 
         <copy todir="${example.output.dir}">
-            <fileset dir="${module.example.basedir}/src/java">
+            <fileset dir="${module.example.basedir}/src/main/java">
                 <patternset refid="compiler.resources"/>
                 <type type="file"/>
             </fileset>
@@ -198,7 +198,7 @@
         </javac>
 
         <copy todir="${example.testoutput.dir}">
-            <fileset dir="${module.example.basedir}/test/java">
+            <fileset dir="${module.example.basedir}/src/test/java">
                 <patternset refid="compiler.resources"/>
                 <type type="file"/>
             </fileset>
