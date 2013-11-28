@@ -25,7 +25,7 @@ public class HSQLEventStoreTest {
     public void setUp() throws SQLException, IOException {
 
         connection = DriverManager.getConnection("jdbc:hsqldb:mem:testdb", "SA", "");
-        SQLLoader.executeSQLStatements(connection, com.asprotunity.fileio.FileReader.readFile("src/sql/EventStore.sql"));
+        SQLLoader.executeSQLStatements(connection, com.asprotunity.fileio.FileReader.readFile("src/main/sql/EventStore.sql"));
         store = new HSQLEventStore(connection);
 
         DateTime timestamp = makeUTCTimestamp();
