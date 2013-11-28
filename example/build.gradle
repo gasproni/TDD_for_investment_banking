@@ -12,7 +12,7 @@ repositories {
 }
 
 task wrapper(type: Wrapper){
-    description = 'Generates gradlew scripts for NIX and win envs'
+    description = 'Generates gradle wrapper scripts for NIX and win envs'
     gradleVersion = '1.9'
 }
 
@@ -21,10 +21,7 @@ idea.module {
 }
 
 dependencies {
-    compile libs.slf4jApi
+    compile libs.jodatime
 
-    runtime libs.slf4jLog4j,
-            libs.log4j
-
-    testCompile libs.test.jbehave_core
+    testCompile libs.junit
 }

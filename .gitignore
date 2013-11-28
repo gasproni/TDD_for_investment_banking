@@ -1,2 +1,6 @@
 *.class
+.gradle/
+.idea/
+target/
+out/
 
