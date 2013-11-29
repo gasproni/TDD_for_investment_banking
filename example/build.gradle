@@ -23,5 +23,10 @@ idea.module {
 dependencies {
     compile libs.jodatime
 
-    testCompile libs.junit
+    testCompile libs.junit,
+            libs.jmock,
+            libs.jmock_script
+
+    testRuntime libs.hsqldb,
+            libs.hsqldb_sqltool
 }

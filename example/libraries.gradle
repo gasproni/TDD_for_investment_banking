@@ -1,6 +1,10 @@
 ext {
     libs = [
             jodatime: 'joda-time:joda-time:2.2',
-            junit: 'junit:junit:4.11'
+            junit: 'junit:junit:4.11',
+            jmock: 'org.jmock:jmock-junit4:2.6.0',
+            jmock_script: 'org.jmock:jmock-script:2.6.0',
+            hsqldb: 'org.hsqldb:hsqldb:2.3.1',
+            hsqldb_sqltool: 'org.hsqldb:sqltool:2.3.1'
     ]
 }
