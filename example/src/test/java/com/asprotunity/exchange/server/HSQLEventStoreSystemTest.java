@@ -15,7 +15,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class HSQLEventStoreTest {
+public class HSQLEventStoreSystemTest {
 
     private HSQLEventStore store;
     private Connection connection;
