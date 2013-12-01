@@ -1,0 +1,32 @@
+defaultTasks 'clean', 'build'
+
+apply plugin: "java"
+apply plugin: "idea"
+apply from: "${rootDir}/libraries.gradle"
+
+buildDir = 'target'
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+task wrapper(type: Wrapper){
+    description = 'Generates gradle wrapper scripts for NIX and win envs'
+    gradleVersion = '1.9'
+}
+
+idea.module {
+    downloadSources = true
+}
+
+dependencies {
+    compile libs.jodatime
+
+    testCompile libs.junit,
+            libs.jmock,
+            libs.jmock_script
+
+    testRuntime libs.hsqldb,
+            libs.hsqldb_sqltool
+}
