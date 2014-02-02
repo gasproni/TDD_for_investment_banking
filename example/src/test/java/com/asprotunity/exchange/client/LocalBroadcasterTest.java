@@ -90,12 +90,14 @@ public class LocalBroadcasterTest {
     }
 
     private void callNotifyEventForTimes(LocalBroadcaster broadcaster, int numberOfEventsToSend) {
-        com.asprotunity.exchange.middleware.Event iceEvent =
-                new com.asprotunity.exchange.middleware.Event(new TestTimeProvider(new DateTime()).nowUTC().toString(),
+        Event iceEvent =
+                new Event(new TestTimeProvider(new DateTime()).nowUTC(),
                         "TIK_1", "USD", 1, 0.2);
 
         for (int i = 0; i < numberOfEventsToSend; ++i) {
-            broadcaster.notifyEvent(iceEvent, null);
+            broadcaster.notifyEvent(new com.asprotunity.exchange.middleware.Event(iceEvent.timestamp.toString(),
+                    iceEvent.security,
+                    iceEvent.currency, iceEvent.spot, iceEvent.volatility));
         }
     }
 

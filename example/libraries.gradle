@@ -1,10 +1,12 @@
 ext {
     libs = [
-            jodatime: 'joda-time:joda-time:2.2',
-            junit: 'junit:junit:4.11',
-            jmock: 'org.jmock:jmock-junit4:2.6.0',
-            jmock_script: 'org.jmock:jmock-script:2.6.0',
-            hsqldb: 'org.hsqldb:hsqldb:2.3.1',
-            hsqldb_sqltool: 'org.hsqldb:sqltool:2.3.1'
+            jodatime: fileTree(dir: "${rootDir}/tools/joda-time-2.2", includes: ['joda-time-2.2.jar']),
+	    joker:    fileTree(dir: "${rootDir}/tools/joker", includes: ['*.jar']),
+            junit: fileTree(dir: "${rootDir}/tools/junit_4_11", includes: ['*.jar']),
+            jmock: fileTree(dir: "${rootDir}/tools/jmock_2_6_0", includes: ['jmock-junit4-2.6.0.jar', 'jmock-2.6.0.jar', 
+                                                                            'hamcrest-library-1.3.jar',
+                                                                            'hamcrest-core-1.3.jar', 
+                                                                            'jmock-script-2.6.0.jar']),
+            hsqldb: fileTree(dir: "${rootDir}/tools/hsqldb_2_3_0/lib", includes: ['hsqldb.jar', 'sqltool.jar'])
     ]
 }

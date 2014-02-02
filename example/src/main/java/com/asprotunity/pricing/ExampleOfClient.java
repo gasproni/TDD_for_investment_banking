@@ -1,14 +1,14 @@
 package com.asprotunity.pricing;
 
 import com.asprotunity.exchange.client.EventSubscriber;
-import com.asprotunity.exchange.client.IcePublisher;
+import com.asprotunity.exchange.client.ExchangeTickPublisher;
 import com.asprotunity.exchange.events.Event;
 
 
 public class ExampleOfClient {
 
     public static void main(String[] args) throws InterruptedException {
-        IcePublisher publisher = new IcePublisher("SimpleServer: tcp -h localhost -p 6666");
+        ExchangeTickPublisher publisher = new ExchangeTickPublisher("SimpleServer", "localhost", 6666);
 
         EventSubscriber eventSubscriber1 = new EventSubscriber() {
             @Override

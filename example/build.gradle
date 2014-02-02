@@ -1,32 +1,34 @@
 defaultTasks 'clean', 'build'
 
 apply plugin: "java"
-apply plugin: "idea"
 apply from: "${rootDir}/libraries.gradle"
-
-buildDir = 'target'
 
 repositories {
 	mavenCentral()
 	mavenLocal()
+
+}
+
+sourceSets {
+    main {
+    	 java {
+            srcDir 'src/generated'
+         }
+    }
 }
 
 task wrapper(type: Wrapper){
     description = 'Generates gradle wrapper scripts for NIX and win envs'
-    gradleVersion = '1.9'
+    gradleVersion = '1.10'
 }
 
-idea.module {
-    downloadSources = true
-}
 
 dependencies {
-    compile libs.jodatime
+    compile libs.jodatime, libs.joker
 
     testCompile libs.junit,
             libs.jmock,
-            libs.jmock_script
+            libs.joker
 
-    testRuntime libs.hsqldb,
-            libs.hsqldb_sqltool
+    testRuntime libs.hsqldb, libs.joker
 }

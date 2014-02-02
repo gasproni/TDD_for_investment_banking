@@ -1,9 +1,8 @@
 package com.asprotunity.exchange.client;
 
-import Ice.Current;
-import com.asprotunity.exchange.eventconversion.EventConverter;
-import com.asprotunity.exchange.middleware.Event;
-import com.asprotunity.exchange.middleware._SubscriberDisp;
+import com.asprotunity.exchange.events.Event;
+import com.asprotunity.exchange.middleware.Subscriber;
+import org.joda.time.DateTime;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,7 +12,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LocalBroadcaster extends _SubscriberDisp implements Runnable {
+public class LocalBroadcaster implements Subscriber, Runnable {
 
     private static class LocalId {
 
@@ -47,8 +46,8 @@ public class LocalBroadcaster extends _SubscriberDisp implements Runnable {
     Thread dispatcherThread;
 
     public LocalBroadcaster() {
-        subscribers = new ConcurrentHashMap<LocalId, EventSubscriber>();
-        eventsQueue = new LinkedList<com.asprotunity.exchange.events.Event>();
+        subscribers = new ConcurrentHashMap<>();
+        eventsQueue = new LinkedList<>();
         eventsQueueLock = new ReentrantLock();
         notEmpty = eventsQueueLock.newCondition();
         dispatcherThread = new Thread(this);
@@ -65,9 +64,9 @@ public class LocalBroadcaster extends _SubscriberDisp implements Runnable {
     }
 
     @Override
-    public void notifyEvent(Event ev, Current current) {
-        com.asprotunity.exchange.events.Event event = EventConverter.fromIceEvent(ev);
-        addToQueue(event);
+    public void notifyEvent(com.asprotunity.exchange.middleware.Event event) {
+        addToQueue(new Event(DateTime.parse(event.timestampUTC), event.security,
+                event.currency, event.spot, event.volatility));
     }
 
     @Override

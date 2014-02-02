@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="sql">
-    <CLASSES />
-    <JAVADOC />
-    <SOURCES>
-      <root url="file://$PROJECT_DIR$/src/sql" />
-    </SOURCES>
-  </library>
-</component>

@@ -87,15 +87,14 @@ public class HSQLEventStoreSystemTest {
     private SecurityData queryData(String security) throws SQLException {
         Statement statement = connection.createStatement();
 
-        ResultSet rs = statement.executeQuery(String.format("select creationTime, security, currency, spot, volatility " +
-                " from SecurityData where security = '%s'", security));
-        try {
+        try (ResultSet rs = statement.executeQuery(String.format("select creationTime, " +
+                "security, currency, spot, volatility " +
+                " from SecurityData where security = '%s'", security))) {
             rs.next();
 
             return new SecurityData(new DateTime(rs.getString(1), DateTimeZone.UTC), rs.getString(2),
                     rs.getString(3), rs.getDouble(4), rs.getDouble(5));
         } finally {
-            rs.close();
             statement.close();
             connection.rollback();
         }
